@@ -1,8 +1,8 @@
-# Match-Making
+# MatchMaking
 
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)](https://nodejs.org/) [![pnpm](https://img.shields.io/badge/pnpm-7.x-blue.svg)](https://pnpm.io/) [![ESLint](https://img.shields.io/badge/ESLint-8.x-orange.svg)](https://eslint.org/) [![Prettier](https://img.shields.io/badge/Prettier-2.x-yellow.svg)](https://prettier.io/)
 
-> Match-Making est un projet de site de rencontre entre gamers, imaginé dans le cadre d'une formation développeur web / web mobile.
+> MatchMaking est un projet de site de rencontre entre gamers, imaginé dans le cadre d'une formation développeur web / web mobile.
 
 ---
 
