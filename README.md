@@ -10,6 +10,7 @@
 
 - [Getting Started](#getting-started)
 - [Tech Stack](#tech-stack)
+- [Directory Structure](#directory-structure)
 - [Scripts](#scripts)
 - [Contributions](#contributions)
 
@@ -53,10 +54,9 @@ Pour démarrer ce projet en local :
 ┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [routes](./src/routes)<br>
 ┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [services](./src/services)<br>
 ┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [utils](./src/utils)<br>
-┣━━╋━━ [app.js](./src/app.js)<br>
-┣━━┻━━ [server.js](./src/server.js)<br>
+┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [app.js](./src/app.js)<br>
+┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [server.js](./src/server.js)<br>
 ┣━━ [tests](./tests)<br>
-┣━━ [migrations](./migrations)<br>
 ┣━━ [package.json](./package.json)<br>
 ┣━━ [.env](./.env) *(non versionné)*<br>
 ┣━━ [.gitignore](./.gitignore)<br>
