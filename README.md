@@ -46,29 +46,13 @@ Pour démarrer ce projet en local :
 
 `├──` [src](./src)<br>
 `│   ├──` [config](./src/config)<br>
-`│   │   └──` [config.js](./src/config/config.js)<br>
 `│   ├──` [controllers](./src/controllers)<br>
-`│   │   ├──` [authController.js](./src/controllers/authController.js)<br>
-`│   │   ├──` [memberController.js](./src/controllers/memberController.js)<br>
-`│   │   └──` [postController.js](./src/controllers/postController.js)<br>
 `│   ├──` [middlewares](./src/middlewares)<br>
-`│   │   ├──` [authMiddleware.js](./src/middlewares/authMiddleware.js)<br>
-`│   │   └──` [errorMiddleware.js](./src/middlewares/errorMiddleware.js)<br>
 `│   ├──` [models](./src/models)<br>
-`│   │   ├──` [member.js](./src/models/member.js)<br>
-`│   │   ├──` [game.js](./src/models/game.js)<br>
-`│   │   └──` [event.js](./src/models/event.js)<br>
 `│   ├──` [repositories](./src/repositories)<br>
-`│   │   └──` [memberRepository.js](./src/repositories/memberRepository.js)<br>
 `│   ├──` [routes](./src/routes)<br>
-`│   │   ├──` [authRoutes.js](./src/routes/authRoutes.js)<br>
-`│   │   ├──` [memberRoutes.js](./src/routes/memberRoutes.js)<br>
-`│   │   └──` [postRoutes.js](./src/routes/postRoutes.js)<br>
 `│   ├──` [services](./src/services)<br>
-`│   │   ├──` [authService.js](./src/services/authService.js)<br>
-`│   │   └──` [memberService.js](./src/services/memberService.js)<br>
 `│   ├──` [utils](./src/utils)<br>
-`│   │   └──` [logger.js](./src/utils/logger.js)<br>
 `│   ├──` [app.js](./src/app.js)<br>
 `│   └──` [server.js](./src/server.js)<br>
 `├──` [tests](./tests)<br>
