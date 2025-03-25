@@ -5,6 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "dev": "node --watch src/server.js",
     "test": "",
     "format": "prettier --write .",
     "prepare": "husky install",
