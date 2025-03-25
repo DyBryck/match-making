@@ -44,6 +44,7 @@ Pour démarrer ce projet en local :
 
 ## Directory Structure
 
+```
 ├── src
 │   ├── config                # Configuration globale (variables d'environnement, DB, etc.)
 │   │   └── config.js
@@ -86,6 +87,7 @@ Pour démarrer ce projet en local :
 ├── .env                      # Variables d'environnement (à ne pas versionner)
 ├── .gitignore
 └── README.md
+```
 
 ## Tech Stack
 
