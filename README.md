@@ -44,39 +44,39 @@ Pour démarrer ce projet en local :
 
 ## Directory Structure
 
-- [src](./src)
-  - [config](./src/config)
-    - [config.js](./src/config/config.js)
-  - [controllers](./src/controllers)
-    - [authController.js](./src/controllers/authController.js)
-    - [memberController.js](./src/controllers/memberController.js)
-    - [postController.js](./src/controllers/postController.js)
-  - [middlewares](./src/middlewares)
-    - [authMiddleware.js](./src/middlewares/authMiddleware.js)
-    - [errorMiddleware.js](./src/middlewares/errorMiddleware.js)
-  - [models](./src/models)
-    - [member.js](./src/models/member.js)
-    - [game.js](./src/models/game.js)
-    - [event.js](./src/models/event.js)
-  - [repositories](./src/repositories)
-    - [memberRepository.js](./src/repositories/memberRepository.js)
-  - [routes](./src/routes)
-    - [authRoutes.js](./src/routes/authRoutes.js)
-    - [memberRoutes.js](./src/routes/memberRoutes.js)
-    - [postRoutes.js](./src/routes/postRoutes.js)
-  - [services](./src/services)
-    - [authService.js](./src/services/authService.js)
-    - [memberService.js](./src/services/memberService.js)
-  - [utils](./src/utils)
-    - [logger.js](./src/utils/logger.js)
-  - [app.js](./src/app.js)
-  - [server.js](./src/server.js)
-- [tests](./tests)
-- [migrations](./migrations)
-- [package.json](./package.json)
-- [.env](./.env) *(non versionné)*
-- [.gitignore](./.gitignore)
-- [README.md](./README.md)
+`├──` [src](./src)<br>
+`│   ├──` [config](./src/config)<br>
+`│   │   └──` [config.js](./src/config/config.js)<br>
+`│   ├──` [controllers](./src/controllers)<br>
+`│   │   ├──` [authController.js](./src/controllers/authController.js)<br>
+`│   │   ├──` [memberController.js](./src/controllers/memberController.js)<br>
+`│   │   └──` [postController.js](./src/controllers/postController.js)<br>
+`│   ├──` [middlewares](./src/middlewares)<br>
+`│   │   ├──` [authMiddleware.js](./src/middlewares/authMiddleware.js)<br>
+`│   │   └──` [errorMiddleware.js](./src/middlewares/errorMiddleware.js)<br>
+`│   ├──` [models](./src/models)<br>
+`│   │   ├──` [member.js](./src/models/member.js)<br>
+`│   │   ├──` [game.js](./src/models/game.js)<br>
+`│   │   └──` [event.js](./src/models/event.js)<br>
+`│   ├──` [repositories](./src/repositories)<br>
+`│   │   └──` [memberRepository.js](./src/repositories/memberRepository.js)<br>
+`│   ├──` [routes](./src/routes)<br>
+`│   │   ├──` [authRoutes.js](./src/routes/authRoutes.js)<br>
+`│   │   ├──` [memberRoutes.js](./src/routes/memberRoutes.js)<br>
+`│   │   └──` [postRoutes.js](./src/routes/postRoutes.js)<br>
+`│   ├──` [services](./src/services)<br>
+`│   │   ├──` [authService.js](./src/services/authService.js)<br>
+`│   │   └──` [memberService.js](./src/services/memberService.js)<br>
+`│   ├──` [utils](./src/utils)<br>
+`│   │   └──` [logger.js](./src/utils/logger.js)<br>
+`│   ├──` [app.js](./src/app.js)<br>
+`│   └──` [server.js](./src/server.js)<br>
+`├──` [tests](./tests)<br>
+`├──` [migrations](./migrations)<br>
+`├──` [package.json](./package.json)<br>
+`├──` [.env](./.env) *(non versionné)*<br>
+`├──` [.gitignore](./.gitignore)<br>
+`└──` [README.md](./README.md)
 
 ## Tech Stack
 
