@@ -45,20 +45,22 @@ Pour démarrer ce projet en local :
 
 ## Directory Structure
 
-┣━━╋ [src](./src)<br>
-┣━━╋━━ [config](./src/config)<br>
-┣━━╋━━ [controllers](./src/controllers)<br>
-┣━━╋━━ [middlewares](./src/middlewares)<br>
-┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [models](./src/models)<br>
-┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [repositories](./src/repositories)<br>
-┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [routes](./src/routes)<br>
-┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [services](./src/services)<br>
-┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [utils](./src/utils)<br>
-┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [app.js](./src/app.js)<br>
-┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [server.js](./src/server.js)<br>
-┣━━ [tests](./tests)<br>
+┣━━ [src](./src) # Configuration globale (variables d'environnement, DB, etc.)<br>
+┃&emsp;&emsp;┣━━ [config](./src/config) # Configuration globale (variables d'environnement, DB, etc.)<br>
+┃&emsp;&emsp;┣━━ [controllers](./src/controllers) # Logique des endpoints (recevoir les requêtes, répondre)<br>
+┃&emsp;&emsp;┣━━ [errors](./src/errors) # Gestion des erreurs (classes d'erreur personnalisées, handlers)<br>
+┃&emsp;&emsp;┣━━ [middlewares](./src/middlewares) # Middlewares (authentification, gestion des erreurs, etc.)<br>
+┃&emsp;&emsp;┣━━ [models](./src/models) # Modèles de données (si utilisation d'un ORM ou modélisation explicite)<br>
+┃&emsp;&emsp;┣━━ [repositories](./src/repositories) # Accès aux données (requêtes SQL ou utilisation d'un ORM)<br>
+┃&emsp;&emsp;┣━━ [routes](./src/routes) # Définition des routes de l'API<br>
+┃&emsp;&emsp;┣━━ [services](./src/services) # Logique métier (business logic)<br>
+┃&emsp;&emsp;┣━━ [utils](./src/utils) # Fonctions utilitaires et helpers<br>
+┃&emsp;&emsp;┣━━ [validations](./src/validations) # Schémas de validation et fonctions de validation<br>
+┃&emsp;&emsp;┣━━ [app.js](./src/app.js) # Configuration principale de l'application (initialisation, middlewares, routes)<br>
+┃&emsp;&emsp;┗━━ [server.js](./src/server.js) # Point d'entrée du serveur<br>
+┣━━ [tests](./tests) # Tests unitaires et d'intégration<br>
 ┣━━ [package.json](./package.json)<br>
-┣━━ [.env](./.env) *(non versionné)*<br>
+┣━━ [.env](./.env) # Variables d'environnement (non versionné)<br>
 ┣━━ [.gitignore](./.gitignore)<br>
 ┗━━ [README.md](./README.md)
 
