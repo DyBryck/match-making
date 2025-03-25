@@ -20,7 +20,8 @@
 
 Pour démarrer ce projet en local :
 
-1. **Clonez le dépôt**  
+1. **Clonez le dépôt**
+
    ```bash
    git clone git@github.com:DyBryck/match-making.git
    cd match-making
@@ -28,6 +29,7 @@ Pour démarrer ce projet en local :
 
 2. **Installez les dépendances**  
    Nous utilisons pnpm :
+
    ```bash
    pnpm install
    ```
@@ -100,12 +102,14 @@ _N'hésitez pas à consulter le package.json pour la liste complète des scripts
 
 Les contributions sont les bienvenues ! Pour contribuer :
 
-1. **Forkez le dépôt** et créez une branche dédiée pour votre fonctionnalité :  
+1. **Forkez le dépôt** et créez une branche dédiée pour votre fonctionnalité :
+
    ```bash
    git checkout -b feature/nom-fonctionnalité dev
    ```
 
-2. **Respectez le workflow GitFlow** :  
+2. **Respectez le workflow GitFlow** :
+
    - **dev** : branche d'intégration.
    - **feature/** : branche pour chaque nouvelle fonctionnalité.
    - **release/** et **hotfix/** seront créées en fonction des besoins.
@@ -116,6 +120,6 @@ Les contributions sont les bienvenues ! Pour contribuer :
 4. **Code Review & Pull Request**  
    Une fois vos changements prêts, ouvrez une Pull Request depuis votre branche feature vers **dev** pour revue.
 
-5. **Respectez les conventions de code**  
+5. **Respectez les conventions de code**
    - Utilisez ESLint et Prettier pour garantir un code propre et bien formaté.
    - Vérifiez que vos commits passent la validation avec commitlint.
