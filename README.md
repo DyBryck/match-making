@@ -32,7 +32,7 @@ Pour démarrer ce projet en local :
    ```
 
 3. **Configuration**  
-   Créez un fichier `.env` à la racine (si nécessaire) et configurez les variables d'environnement.
+   Créez un fichier `.env` à la racine et configurez les variables d'environnement.
 
 4. **Lancer le projet**  
    Pour démarrer en mode développement :
