@@ -6,7 +6,10 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "prepare": "husky install"
+    "format": "prettier --write .",
+    "prepare": "husky install",
+    "commit": "npx cz",
+    "lint": "npx eslint ."
   },
   "lint-staged": {
     "*.{js,mjs}": "eslint --fix",
