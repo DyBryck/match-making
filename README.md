@@ -62,9 +62,6 @@ Voici quelques scripts définis dans le fichier `package.json` :
 - **`pnpm run dev`**  
   Lance le serveur en mode développement.
 
-- **`pnpm run build`**  
-  Compile le projet pour la production (si applicable).
-
 - **`pnpm run lint`**  
   Exécute ESLint sur l'ensemble du projet.
 
@@ -84,7 +81,7 @@ Les contributions sont les bienvenues ! Pour contribuer :
 
 1. **Forkez le dépôt** et créez une branche dédiée pour votre fonctionnalité :  
    ```bash
-   git checkout -b feature/nom-fonctionnalité develop
+   git checkout -b feature/nom-fonctionnalité dev
    ```
 
 2. **Respectez le workflow GitFlow** :  
