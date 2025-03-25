@@ -21,7 +21,7 @@ Pour démarrer ce projet en local :
 
 1. **Clonez le dépôt**  
    ```bash
-   git clone https://github.com/votre-utilisateur/match-making.git
+   git clone git@github.com:DyBryck/match-making.git
    cd match-making
    ```
 
