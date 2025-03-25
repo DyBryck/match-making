@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -17,16 +18,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
-          cache: "pnpm"
+          cache: "npm"
 
-      - name: Install pnpm globally
+      - name: Enable pnpm via Corepack
         run: |
-          npm install -g pnpm
+          corepack enable
+          corepack prepare pnpm@latest --activate
           pnpm --version
-          which pnpm
 
       - name: Install dependencies
-        run: npx pnpm install
+        run: npm exec pnpm install
 
       - name: Lint code
-        run: npx pnpm run lint
+        run: npm exec pnpm run lint
