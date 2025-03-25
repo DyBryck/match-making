@@ -1,50 +1,103 @@
-# match-making
+# Match-Making
 
-MatchMaking est un projet de site de rencontre entre gamers imaginé dans le cadre d'une formation développeur web / web mobile
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)](https://nodejs.org/) [![pnpm](https://img.shields.io/badge/pnpm-7.x-blue.svg)](https://pnpm.io/) [![ESLint](https://img.shields.io/badge/ESLint-8.x-orange.svg)](https://eslint.org/) [![Prettier](https://img.shields.io/badge/Prettier-2.x-yellow.svg)](https://prettier.io/)
 
-L’idée serait de créer un réseau social dédié aux gamers où chaque membre peut créer et personnaliser son profil. Rassembler une communauté de passionnés de jeux vidéo autour de plusieurs fonctionnalités clés:
+> Match-Making est un projet de site de rencontre entre gamers, imaginé dans le cadre d'une formation développeur web / web mobile.
 
-- **Gestion des membres et de leurs profils:**
-  Les utilisateurs s’inscrivent, créent un profil et indiquent la liste des jeux auxquels ils jouent. Ils peuvent aussi suivre d’autres membres pour rester connectés.
-- **Interaction autour des jeux vidéo:**
-  Les membres peuvent suivre des jeux vidéo spécifiques et, via leurs posts, associer un jeu à leur contenu. Chaque post pourra, par exemple, rediriger vers une page dédiée au jeu.
+---
 
-- **Contenu et interactions sociales:**
-  Les membres peuvent publier des posts (texte, images, vidéos) et commenter ceux des autres. Un système de réactions (like, love, etc.) permettra d’exprimer leur ressenti sur posts et commentaires. Chaque jeu et évènement aurait un salon textuel dédié.
+## Table des matières
 
-Ce projet suit plusieurs règles pour garantir une qualité de code homogène et un workflow collaboratif efficace. Voici les principaux points à respecter :
+- [Getting Started](#getting-started)
+- [Tech Stack](#tech-stack)
+- [Scripts](#scripts)
+- [Contributions](#contributions)
+- [License](#license)
 
-1. Structure des branches (GitFlow)
-   • main : contient le code de production, toujours stable.
-   • develop : branche d’intégration où sont fusionnées les nouvelles fonctionnalités.
-   • feature/ : pour chaque nouvelle fonctionnalité, créez une branche à partir de develop avec le format feature/[nom-fonctionnalité].
-   • release/ et hotfix/ : utilisées pour préparer une nouvelle version ou corriger un bug en production (elles seront créées au besoin).
+---
 
-2. Workflow de commits et gestion des messages
-   • Commitizen et Commitlint :
-   Pour garantir la cohérence des messages de commit, nous utilisons Commitizen qui guide lors de la rédaction des messages selon le standard Conventional Commits.
-   • Exemple d’usage : lancez npx cz ou git cz pour formuler vos commits.
-   • Commitlint :
-   Un hook Git (via Husky) vérifie que les messages respectent le format attendu. En cas de non-conformité, le commit est rejeté.
+## Getting Started
 
-3. Qualité et formatage du code
-   • ESLint :
-   Pour assurer la qualité et détecter les erreurs, ESLint est utilisé. Toute modification doit être conforme aux règles définies.
-   • Prettier :
-   Pour un formatage cohérent, Prettier est intégré. L’outil s’exécute via lint-staged sur les fichiers modifiés avant chaque commit.
-   • lint-staged & Husky :
-   Les hooks pré-commit déclenchés par Husky exécutent lint-staged pour corriger et vérifier uniquement les fichiers mis en scène.
-   Cela permet de garder un historique de commit propre et de respecter les standards de code.
+Pour démarrer ce projet en local :
 
-4. Utilisation des ES Modules
+1. **Clonez le dépôt**  
+   ```bash
+   git clone https://github.com/votre-utilisateur/match-making.git
+   cd match-making
+   ```
 
-Le projet est configuré pour utiliser les ES Modules (avec "type": "module" dans le package.json), ce qui permet d’utiliser la syntaxe moderne import/export dans l’ensemble du code.
+2. **Installez les dépendances**  
+   Nous utilisons pnpm :
+   ```bash
+   pnpm install
+   ```
 
-5. Fichiers à ne pas versionner
+3. **Configuration**  
+   Créez un fichier `.env` à la racine (si nécessaire) et configurez les variables d'environnement.
 
-Assurez-vous que votre fichier .gitignore contient au moins les éléments suivants pour éviter de versionner des fichiers indésirables :
-• node_modules/
-• .env
-• dist/ ou build/ (si applicable)
-• fichiers de logs (\*.log)
-• fichiers spécifiques à votre IDE (par exemple, .vscode/)
+4. **Lancer le projet**  
+   Pour démarrer en mode développement :
+   ```bash
+   pnpm run dev
+   ```
+
+---
+
+## Tech Stack
+
+Ce projet utilise les technologies suivantes :
+
+- **Node.js** – Environnement d'exécution JavaScript côté serveur
+- **pnpm** – Gestionnaire de dépendances rapide et efficace
+- **ES Modules** – Syntaxe moderne d'import/export (activée dans le package.json)
+- **ESLint & Prettier** – Pour la qualité et le formatage du code
+- **Husky, lint-staged, commitlint, commitizen** – Pour un workflow Git et des commits standardisés
+
+---
+
+## Scripts
+
+Voici quelques scripts définis dans le fichier `package.json` :
+
+- **`pnpm run dev`**  
+  Lance le serveur en mode développement.
+
+- **`pnpm run build`**  
+  Compile le projet pour la production (si applicable).
+
+- **`pnpm run lint`**  
+  Exécute ESLint sur l'ensemble du projet.
+
+- **`pnpm run format`**  
+  Lance Prettier pour formater le code.
+
+- **`pnpm commit`**  
+  Utilise Commitizen pour formuler des messages de commit standardisés.
+
+_N'hésitez pas à consulter le package.json pour la liste complète des scripts._
+
+---
+
+## Contributions
+
+Les contributions sont les bienvenues ! Pour contribuer :
+
+1. **Forkez le dépôt** et créez une branche dédiée pour votre fonctionnalité :  
+   ```bash
+   git checkout -b feature/nom-fonctionnalité develop
+   ```
+
+2. **Respectez le workflow GitFlow** :  
+   - **dev** : branche d'intégration.
+   - **feature/** : branche pour chaque nouvelle fonctionnalité.
+   - **release/** et **hotfix/** seront créées en fonction des besoins.
+
+3. **Utilisez Commitizen** pour vos commits :  
+   Lancez `pnpm commit` ou `npx cz` afin de créer des messages de commit conformes aux [Conventional Commits](https://www.conventionalcommits.org/).
+
+4. **Code Review & Pull Request**  
+   Une fois vos changements prêts, ouvrez une Pull Request depuis votre branche feature vers **dev** pour revue.
+
+5. **Respectez les conventions de code**  
+   - Utilisez ESLint et Prettier pour garantir un code propre et bien formaté.
+   - Vérifiez que vos commits passent la validation avec commitlint.
