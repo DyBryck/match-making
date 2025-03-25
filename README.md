@@ -44,23 +44,23 @@ Pour démarrer ce projet en local :
 
 ## Directory Structure
 
-`├──` [src](./src)<br>
-`│   ├──` [config](./src/config)<br>
-`│   ├──` [controllers](./src/controllers)<br>
-`│   ├──` [middlewares](./src/middlewares)<br>
-`│   ├──` [models](./src/models)<br>
-`│   ├──` [repositories](./src/repositories)<br>
-`│   ├──` [routes](./src/routes)<br>
-`│   ├──` [services](./src/services)<br>
-`│   ├──` [utils](./src/utils)<br>
-`│   ├──` [app.js](./src/app.js)<br>
-`│   └──` [server.js](./src/server.js)<br>
-`├──` [tests](./tests)<br>
-`├──` [migrations](./migrations)<br>
-`├──` [package.json](./package.json)<br>
-`├──` [.env](./.env) *(non versionné)*<br>
-`├──` [.gitignore](./.gitignore)<br>
-`└──` [README.md](./README.md)
+┣━━╋ [src](./src)<br>
+┣━━╋━━ [config](./src/config)<br>
+┣━━╋━━ [controllers](./src/controllers)<br>
+┣━━╋━━ [middlewares](./src/middlewares)<br>
+┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [models](./src/models)<br>
+┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [repositories](./src/repositories)<br>
+┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [routes](./src/routes)<br>
+┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [services](./src/services)<br>
+┃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┣━━ [utils](./src/utils)<br>
+┣━━╋━━ [app.js](./src/app.js)<br>
+┣━━┻━━ [server.js](./src/server.js)<br>
+┣━━ [tests](./tests)<br>
+┣━━ [migrations](./migrations)<br>
+┣━━ [package.json](./package.json)<br>
+┣━━ [.env](./.env) *(non versionné)*<br>
+┣━━ [.gitignore](./.gitignore)<br>
+┗━━ [README.md](./README.md)
 
 ## Tech Stack
 
