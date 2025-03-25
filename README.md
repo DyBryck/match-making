@@ -44,50 +44,39 @@ Pour démarrer ce projet en local :
 
 ## Directory Structure
 
-```
-├── src
-│   ├── config                # Configuration globale (variables d'environnement, DB, etc.)
-│   │   └── config.js
-│   ├── controllers           # Contrôleurs pour les endpoints de l'API
-│   │   ├── authController.js
-│   │   ├── memberController.js
-│   │   ├── postController.js
-│   │   └── ... 
-│   ├── middlewares           # Middlewares (authentification, validation, gestion des erreurs, etc.)
-│   │   ├── authMiddleware.js
-│   │   ├── errorMiddleware.js
-│   │   └── ...
-│   ├── models                # Modèles de données (si vous utilisez un ORM ou une modélisation explicite)
-│   │   ├── member.js
-│   │   ├── game.js
-│   │   ├── event.js
-│   │   └── ...
-│   ├── repositories          # Accès aux données, exécute les requêtes SQL ou interagit avec l'ORM
-│   │   ├── memberRepository.js
-│   │   └── ...
-│   ├── routes                # Définition des routes de l'API
-│   │   ├── authRoutes.js
-│   │   ├── memberRoutes.js
-│   │   ├── postRoutes.js
-│   │   └── ...
-│   ├── services              # Logique métier (business logic)
-│   │   ├── authService.js
-│   │   ├── memberService.js
-│   │   └── ...
-│   ├── utils                 # Fonctions utilitaires, helpers, etc.
-│   │   └── logger.js
-│   ├── app.js                # Configuration de l'application (initialisation du serveur, routes, middlewares)
-│   └── server.js             # Point d'entrée du serveur
-├── tests                     # Tests unitaires et d'intégration
-│   ├── controllers
-│   ├── services
-│   └── ...
-├── migrations                # Fichiers de migrations de la base de données
-├── package.json
-├── .env                      # Variables d'environnement (à ne pas versionner)
-├── .gitignore
-└── README.md
-```
+- [src](./src)
+  - [config](./src/config)
+    - [config.js](./src/config/config.js)
+  - [controllers](./src/controllers)
+    - [authController.js](./src/controllers/authController.js)
+    - [memberController.js](./src/controllers/memberController.js)
+    - [postController.js](./src/controllers/postController.js)
+  - [middlewares](./src/middlewares)
+    - [authMiddleware.js](./src/middlewares/authMiddleware.js)
+    - [errorMiddleware.js](./src/middlewares/errorMiddleware.js)
+  - [models](./src/models)
+    - [member.js](./src/models/member.js)
+    - [game.js](./src/models/game.js)
+    - [event.js](./src/models/event.js)
+  - [repositories](./src/repositories)
+    - [memberRepository.js](./src/repositories/memberRepository.js)
+  - [routes](./src/routes)
+    - [authRoutes.js](./src/routes/authRoutes.js)
+    - [memberRoutes.js](./src/routes/memberRoutes.js)
+    - [postRoutes.js](./src/routes/postRoutes.js)
+  - [services](./src/services)
+    - [authService.js](./src/services/authService.js)
+    - [memberService.js](./src/services/memberService.js)
+  - [utils](./src/utils)
+    - [logger.js](./src/utils/logger.js)
+  - [app.js](./src/app.js)
+  - [server.js](./src/server.js)
+- [tests](./tests)
+- [migrations](./migrations)
+- [package.json](./package.json)
+- [.env](./.env) *(non versionné)*
+- [.gitignore](./.gitignore)
+- [README.md](./README.md)
 
 ## Tech Stack
 
