@@ -12,7 +12,6 @@
 - [Tech Stack](#tech-stack)
 - [Scripts](#scripts)
 - [Contributions](#contributions)
-- [License](#license)
 
 ---
 
@@ -59,16 +58,16 @@ Ce projet utilise les technologies suivantes :
 
 Voici quelques scripts définis dans le fichier `package.json` :
 
-- **`pnpm run dev`**  
+- **`pnpm run dev`**
   Lance le serveur en mode développement.
 
-- **`pnpm run lint`**  
+- **`pnpm run lint`**
   Exécute ESLint sur l'ensemble du projet.
 
-- **`pnpm run format`**  
+- **`pnpm run format`**
   Lance Prettier pour formater le code.
 
-- **`pnpm commit`**  
+- **`pnpm commit`**
   Utilise Commitizen pour formuler des messages de commit standardisés.
 
 _N'hésitez pas à consulter le package.json pour la liste complète des scripts._
