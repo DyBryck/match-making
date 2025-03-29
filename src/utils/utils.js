@@ -7,6 +7,18 @@ const defaultSuccessCodes = {
   DELETE: 200,
 };
 
+const handleUniqueConstraint = (error) => {
+  const field = error.message.match(/\(`(.+?)`\)/);
+  switch (field[1]) {
+    case "pseudo":
+      return "Ce pseudo est déjà pris";
+    case "email":
+      return "Cet adresse email est déjà utilisé";
+    default:
+      return "Erreur de contrainte unique";
+  }
+};
+
 export const handleRequest = (callback) => async (req, res) => {
   try {
     const body = req.method === "POST" || req.method === "PUT" ? req.body : null;
@@ -19,8 +31,10 @@ export const handleRequest = (callback) => async (req, res) => {
     // appendLog(`Erreur rencontrée: ${error}`);
 
     if (error.message.includes("Unique constraint failed")) {
-      return res.status(400).json({ error: "Doublon détecté" });
+      const uniqueConstraintError = handleUniqueConstraint(error);
+      return res.status(400).json({ error: uniqueConstraintError });
     }
+
     if (error.message.includes("FOREIGN KEY constraint failed")) {
       return res.status(404).json({ error: "Un élément n'existe pas" });
     }

@@ -1,18 +1,14 @@
-import { PrismaClient } from "@prisma/client";
+import * as memberRepository from "../repositories/memberRepository.js";
 import { validateMember } from "../validators/memberValidator.js";
-
-const prisma = new PrismaClient();
 
 export const createMember = async (body) => {
   const memberData = {
     ...body,
-    birthdate: new Date("1996-02-13"),
+    birthdate: new Date(body.birthdate),
   };
 
   validateMember(memberData);
 
-  const member = await prisma.member.create({
-    data: memberData,
-  });
+  const member = await memberRepository.createMember(memberData);
   return member;
 };

@@ -10,7 +10,10 @@
     "format": "prettier --write .",
     "prepare": "husky install",
     "commit": "npx cz",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "prisma-studio": "pnpm exec prisma studio",
+    "prisma-migrate": "pnpm exec prisma migrate dev --name init",
+    "prisma-reset": "pnpm exec prisma migrate reset --force --skip-seed"
   },
   "lint-staged": {
     "*.{js,mjs}": "eslint --fix",

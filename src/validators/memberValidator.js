@@ -1,5 +1,5 @@
 import { BadRequestError } from "../errors/customErrors.js";
-import { validateDate, validateName } from "./commonValidators.js";
+import { validateDate, validateEmail, validateName, validatePseudo } from "./commonValidators.js";
 
 export const validateMember = (member, partial = false) => {
   // if (Object.keys(member).length === 0) {
@@ -31,7 +31,21 @@ export const validateMember = (member, partial = false) => {
     }
   });
 
-  ["pseudo", "first_name", "last_name"].forEach((field) => {
+  if (member.pseudo !== undefined) {
+    const pseudoErrors = validatePseudo(member.pseudo);
+    if (pseudoErrors.length > 0) {
+      throw new BadRequestError(`${pseudoErrors.join(", ")}`);
+    }
+  }
+
+  if (member.email !== undefined) {
+    const emailErrors = validateEmail(member.email);
+    if (emailErrors.length > 0) {
+      throw new BadRequestError(`${emailErrors.join(", ")}`);
+    }
+  }
+
+  ["first_name", "last_name"].forEach((field) => {
     if (member[field] !== undefined) {
       const error = validateName(member[field]);
       if (error) {

@@ -15,7 +15,7 @@ datasource db {
 
 model member {
   member_id            Int          @id @default(autoincrement()) @map("member_id")
-  pseudo               String       @unique @db.VarChar(50)
+  pseudo               String       @unique @db.VarChar(25)
   first_name           String       @db.VarChar(50)
   last_name            String       @db.VarChar(50)
   birthdate            DateTime     @db.Date

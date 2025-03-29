@@ -18,6 +18,26 @@ export const validateEmail = (email) => {
   return errors;
 };
 
+export const validatePseudo = (pseudo) => {
+  const errors = [];
+  if (typeof pseudo !== "string") {
+    errors.push("Le pseudo doit être une chaîne de caractères");
+  }
+  if (pseudo.trim("") !== pseudo) {
+    errors.push("Le pseudo ne doit pas commencer ou terminer par un espace");
+  }
+  if (/[#%^@"*:]/.test(pseudo)) {
+    errors.push("Le pseudo ne doit pas contenir de caractères spéciaux");
+  }
+  if (pseudo.length < 2) {
+    errors.push("Le pseudo est trop court");
+  }
+  if (pseudo.length > 25) {
+    errors.push("Le pseudo est trop long");
+  }
+  return errors;
+};
+
 export const validateName = (name) => {
   if (typeof name !== "string") {
     return "Le nom doit être une chaîne de caractères";
@@ -31,7 +51,6 @@ export const validateDate = (date) => {
   if (!match) {
     errors.push("Format de date invalide, attendu YYYY-MM-DD");
   } else {
-    console.log(match);
     const month = parseInt(match[2], 10);
     const day = parseInt(match[3], 10);
     if (month < 1 || month > 12) {
