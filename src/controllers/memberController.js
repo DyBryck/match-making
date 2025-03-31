@@ -1,8 +1,9 @@
 import * as memberService from "../services/memberService.js";
+import { generateToken } from "../utils/passwordUtils.js";
 import { handleRequest } from "../utils/utils.js";
 
 export const getMemberByEmail = handleRequest(async (req) => {
-  const memberFound = await memberService.getMemberByEmail(req.body.email);
+  const memberFound = await memberService.getMemberByEmail(req.body);
   return { message: "Membre trouvé:", data: memberFound };
 });
 
@@ -11,15 +12,14 @@ export const createMember = handleRequest(async (req) => {
   return { message: "Membre créé:", data: memberCreated };
 });
 
-// export const loginMember = handleRequest(async (req) => {
-//   const { email, password } = req.body;
-//   const memberFound = await getMemberByEmail(req.body);
+export const loginMember = handleRequest(async (req) => {
+  const memberFound = await memberService.loginMember(req.body);
 
-//   if (password !== memberFound.password) {
-//     return { message: "Mot de passe incorrect" };
-//   }
+  const token = generateToken({ id: memberFound.member_id, email: memberFound.email });
 
-//   return {
-//     message: "Connexion réussie.",
-//   };
-// });
+  return {
+    statusCode: 200,
+    message: "Connexion réussie.",
+    token,
+  };
+});

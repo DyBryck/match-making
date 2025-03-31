@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/members", memberController.getMemberByEmail);
 router.post("/members", memberController.createMember);
-// router.post("/members/login", memberController.loginMember);
+router.post("/members/login", memberController.loginMember);
 // router.post("/posts", postController.createPost);
 
 export default router;
