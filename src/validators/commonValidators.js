@@ -90,3 +90,64 @@ export const validateDate = (date) => {
 
   return errors;
 };
+/**
+ * Vérifie si une valeur est une chaîne de caractères valide
+ * @param {string} value - La valeur à vérifier
+ * @param {string} fieldName - Le nom du champ pour les messages d'erreur
+ * @param {Object} options - Options de validation (min, max, required)
+ * @returns {string|null} - Message d'erreur ou null si valide
+ */
+export const validateString = (value, fieldName, options = {}) => {
+  if (options.required && !value) {
+    return `${fieldName} est requis`;
+  }
+  if (value && typeof value !== "string") {
+    return `${fieldName} doit être une chaîne de caractères`;
+  }
+  if (value && value.trim() === "") {
+    return `${fieldName} ne peut pas être vide`;
+  }
+  if (options.min && value.length < options.min) {
+    return `${fieldName} doit contenir au moins ${options.min} caractères`;
+  }
+  if (options.max && value.length > options.max) {
+    return `${fieldName} ne peut pas dépasser ${options.max} caractères`;
+  }
+  return null;
+};
+
+/**
+ * Vérifie si une valeur est une URL valide
+ * @param {string} value - La valeur à vérifier
+ * @param {string} fieldName - Le nom du champ pour les messages d'erreur
+ * @returns {string|null} - Message d'erreur ou null si valide
+ */
+export const validateURL = (value, fieldName) => {
+  if (value) {
+    if (typeof value !== "string") {
+      return `${fieldName} doit être une chaîne de caractères`;
+    }
+    try {
+      new URL(value);
+    } catch (error) {
+      return `${fieldName} doit être une URL valide`, error;
+    }
+  }
+  return null;
+};
+
+/**
+ * Vérifie si une valeur est un identifiant numérique valide
+ * @param {string|number} value - La valeur à vérifier
+ * @param {string} fieldName - Le nom du champ pour les messages d'erreur
+ * @returns {string|null} - Message d'erreur ou null si valide
+ */
+export const validateNumericId = (value, fieldName) => {
+  if (!value) {
+    return `${fieldName} est requis`;
+  }
+  if (isNaN(Number(value))) {
+    return `${fieldName} doit être un nombre`;
+  }
+  return null;
+};
