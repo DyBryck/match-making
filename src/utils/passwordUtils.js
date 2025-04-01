@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const saltRounds = 10;
 
@@ -28,5 +29,33 @@ export const comparePassword = async (plainPassword, hashedPassword) => {
     return await bcrypt.compare(plainPassword, hashedPassword);
   } catch (error) {
     throw new Error("Erreur lors de la vérification du mot de passe: " + error.message);
+  }
+};
+
+const SECRET_KEY = process.env.JWT_SECRET;
+
+export const generateToken = (payload, expiresIn = "1h") => {
+  return jwt.sign(payload, SECRET_KEY, { expiresIn });
+};
+
+export const verifyToken = (token) => {
+  return jwt.verify(token, SECRET_KEY);
+};
+
+export const authenticate = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ message: "Token manquant ou invalide" });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = verifyToken(token);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: "Token invalide ou expiré", error });
   }
 };

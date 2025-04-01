@@ -1,4 +1,4 @@
-import { expect, vi } from "vitest";
+import { describe, expect, vi } from "vitest";
 import * as memberController from "../src/controllers/memberController.js";
 import * as memberRepository from "../src/repositories/memberRepository.js";
 import * as memberService from "../src/services/memberService.js";
@@ -38,7 +38,7 @@ describe("createMember Controller", () => {
     expect(memberService.createMember).toHaveBeenCalledWith(req.body);
   });
 
-  it("devrait renvoyer 500 en cas d'erreur", async () => {
+  it("devrait renvoyer 500 en cas d'erreur lors de la création d'un membre", async () => {
     const req = { body: { pseudo: "errorUser" } };
     const res = fakeResponse();
 
@@ -48,6 +48,31 @@ describe("createMember Controller", () => {
 
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({ error: "Erreur de création" });
+  });
+});
+
+describe("loginMember controller", () => {
+  it("devrait renvoyer connexion réussie et un token lors de la connexion", async () => {
+    const req = { body: { email: "test@exemple.com", password: "123456" } };
+    const res = fakeResponse();
+
+    const fakeMember = {
+      id: "user123",
+      email: "test@exemple.com",
+      password: "hashedPassword",
+    };
+
+    vi.spyOn(memberService, "loginMember").mockResolvedValue(fakeMember);
+    vi.spyOn(passwordUtils, "generateToken").mockReturnValue("fake.jwt.token");
+
+    await memberController.loginMember(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith({
+      statusCode: 200,
+      message: "Connexion réussie.",
+      token: "fake.jwt.token",
+    });
   });
 });
 

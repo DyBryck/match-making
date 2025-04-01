@@ -41,7 +41,7 @@ export const handleRequest = (callback) => async (req, res) => {
     const data = await callback(req, res);
 
     // Définit le code de succès par défaut en fonction de la méthode HTTP
-    const code = defaultSuccessCodes[req.method] || 200;
+    const code = data?.statusCode || defaultSuccessCodes[req.method] || 200;
 
     // Retourn la réponse avec le code de succès et les données
     return res.status(code).json(data);
