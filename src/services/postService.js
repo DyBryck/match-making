@@ -1,4 +1,3 @@
-
 import * as postRepository from "../repositories/postRepository.js";
 import { validatePost, validatePostId } from "../validators/postValidator.js";
 

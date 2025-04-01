@@ -10,12 +10,12 @@ router.get("/members/:id", memberController.getMemberById);
 router.post("/members", memberController.createMember);
 router.post("/members/login", memberController.loginMember);
 router.post("/members/:id/follow", memberController.followMember);
-//posts
+
+//Posts
 router.post("/posts", postController.createPost);
 router.get("/posts", postController.getPosts);
 router.get("/posts/:post_id", postController.getPostById);
 router.put("/posts/:post_id", postController.updatePost);
 router.delete("/posts/:post_id", postController.deletePost);
-
 
 export default router;

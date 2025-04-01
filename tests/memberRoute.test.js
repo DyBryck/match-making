@@ -32,7 +32,10 @@ describe("createMember Controller", () => {
     await memberController.createMember(req, res);
 
     expect(res.status).toHaveBeenCalledWith(201);
-    expect(res.json).toHaveBeenCalledWith(memberData);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Membre crée avec succès:",
+      member: memberData,
+    });
     expect(memberService.createMember).toHaveBeenCalledWith(req.body);
   });
 
