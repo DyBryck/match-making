@@ -1,13 +1,22 @@
 import Post from "../models/postSchema.js";
 
-class PostRepository {
-  async createPost(postData) {
-    try {
-      return await Post.create(postData);
-    } catch (error) {
-      throw new Error(`Error creating post: ${error.message}`);
-    }
-  }
+export const createPost = async (postData) => {
+  const newPost = await Post.create(postData);
+  return newPost;
+};
+export const getPosts = async () => {
+  const posts = await Post.find();
+  return posts;
+};
+export const getPostById = async (post_id) => {
+  const post = await Post.findOne({post_id});
+  return post;
+};
+export const updatePost = async (post_id, postData) => {
+  const updatedPost = await Post.findOneAndUpdate({post_id}, postData, {new: true});
+  return updatedPost;
 }
-
-export default new PostRepository();
+export const deletePost = async (post_id) => {
+  const deletedPost = await Post.findOneAndDelete({post_id});
+  return deletedPost;
+}
