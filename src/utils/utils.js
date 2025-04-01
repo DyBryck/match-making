@@ -1,24 +1,5 @@
 import { BadRequestError, NotFoundError } from "../errors/customErrors.js";
 
-/**
- *
- * @param {*} error Erreur de contrainte unique
- * @description Gère les erreurs de contrainte unique
- * @returns {string} Message d'erreur spécifique
- */
-const handleUniqueConstraint = (error) => {
-  // Regex pour extraire le champ de l'erreur
-  const field = error.message.match(/\(`(.+?)`\)/);
-  switch (field[1]) {
-    case "pseudo":
-      return "Ce pseudo est déjà pris";
-    case "email":
-      return "Cette adresse email est déjà utilisé";
-    default:
-      return "Erreur de contrainte unique:", error;
-  }
-};
-
 // Codes de succès par défaut pour chaque méthode HTTP
 const defaultSuccessCodes = {
   GET: 200,
@@ -47,13 +28,6 @@ export const handleRequest = (callback) => async (req, res) => {
     return res.status(code).json(data);
   } catch (error) {
     // appendLog(`Erreur rencontrée: ${error}`);
-
-    // Si l'erreur renvoyée par le repository est une erreur de contrainte unique,
-    // retourne un message d'erreur spécifique
-    if (error.message.includes("Unique constraint failed")) {
-      const uniqueConstraintError = handleUniqueConstraint(error);
-      return res.status(400).json({ error: uniqueConstraintError });
-    }
 
     // Si l'erreur est une instance de BadRequestError ou NotFoundError,
     // définit le code approprié
