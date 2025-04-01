@@ -1,18 +1,17 @@
-import { BadRequestError, NotFoundError } from "../errors/customErrors.js";
+import { BadRequestError } from "../errors/customErrors.js";
 import * as memberRepository from "../repositories/memberRepository.js";
 import { comparePassword, hashPassword } from "../utils/passwordUtils.js";
 import { validateAndThrow } from "../utils/validatorUtils.js";
 import { validateMember } from "../validators/memberValidator.js";
 
+export const getMemberById = async (body) => {
+  const { id } = body;
+  return await memberRepository.getMemberById(parseInt(id));
+};
+
 export const getMemberByEmail = async (body) => {
   const { email } = body;
-  const memberFound = await memberRepository.getMemberByEmail(email);
-
-  if (!memberFound) {
-    throw new NotFoundError("Membre introuvable");
-  }
-
-  return memberFound;
+  return await memberRepository.getMemberByEmail(email);
 };
 
 export const createMember = async (body) => {
@@ -27,27 +26,23 @@ export const createMember = async (body) => {
     password: hashedPassword,
   };
 
-  const member = await memberRepository.createMember(memberData);
-  if (!member) {
-    throw new Error("Erreur lors de la création du membre");
-  }
-
-  return member;
+  return await memberRepository.createMember(memberData);
 };
 
 export const loginMember = async (body) => {
-  const { email, password } = body;
+  const { password } = body;
 
-  const memberFound = await getMemberByEmail(email);
-  if (!memberFound) {
-    throw new NotFoundError("Membre introuvable");
-  }
-
-  const isPasswordValid = await comparePassword(password, memberFound.password);
-
-  if (!isPasswordValid) {
-    throw new BadRequestError("Mot de passe incorrect");
-  }
+  const memberFound = await getMemberByEmail(body);
+  await comparePassword(password, memberFound.password);
 
   return memberFound;
+};
+
+// Relations
+export const followMember = async (body) => {
+  const { followerId, followedId } = body;
+  if (followedId === followerId) {
+    throw new BadRequestError("Un membre ne peut pas se suivre lui-même");
+  }
+  return await memberRepository.followMember(followerId, followedId);
 };

@@ -6,14 +6,16 @@ const router = express.Router();
 
 // Members
 router.get("/members", memberController.getMemberByEmail);
+router.get("/members/:id", memberController.getMemberById);
 router.post("/members", memberController.createMember);
 router.post("/members/login", memberController.loginMember);
-
-// Posts
+router.post("/members/:id/follow", memberController.followMember);
+//posts
 router.post("/posts", postController.createPost);
 router.get("/posts", postController.getPosts);
 router.get("/posts/:post_id", postController.getPostById);
 router.put("/posts/:post_id", postController.updatePost);
 router.delete("/posts/:post_id", postController.deletePost);
+
 
 export default router;

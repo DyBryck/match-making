@@ -1,5 +1,6 @@
 import { describe, expect, vi } from "vitest";
 import * as memberController from "../src/controllers/memberController.js";
+import { NotFoundError } from "../src/errors/customErrors.js";
 import * as memberRepository from "../src/repositories/memberRepository.js";
 import * as memberService from "../src/services/memberService.js";
 import * as passwordUtils from "../src/utils/passwordUtils.js";
@@ -31,10 +32,7 @@ describe("createMember Controller", () => {
     await memberController.createMember(req, res);
 
     expect(res.status).toHaveBeenCalledWith(201);
-    expect(res.json).toHaveBeenCalledWith({
-      message: "Membre créé:",
-      data: memberData,
-    });
+    expect(res.json).toHaveBeenCalledWith(memberData);
     expect(memberService.createMember).toHaveBeenCalledWith(req.body);
   });
 
@@ -42,7 +40,8 @@ describe("createMember Controller", () => {
     const req = { body: { pseudo: "errorUser" } };
     const res = fakeResponse();
 
-    vi.spyOn(memberService, "createMember").mockRejectedValue(new Error("Erreur de création"));
+    const error = new Error("Erreur de création");
+    vi.spyOn(memberService, "createMember").mockRejectedValue(error);
 
     await memberController.createMember(req, res);
 
@@ -73,6 +72,19 @@ describe("loginMember controller", () => {
       message: "Connexion réussie.",
       token: "fake.jwt.token",
     });
+  });
+
+  it("devrait renvoyer une erreur 404 si le membre n'est pas trouvé", async () => {
+    const req = { body: { email: "notfound@example.com", password: "123456" } };
+    const res = fakeResponse();
+
+    const error = new NotFoundError("Membre introuvable");
+    vi.spyOn(memberService, "loginMember").mockRejectedValue(error);
+
+    await memberController.loginMember(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ error: "Membre introuvable" });
   });
 });
 
