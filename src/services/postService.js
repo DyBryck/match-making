@@ -1,6 +1,6 @@
 import * as postRepository from "../repositories/postRepository.js";
 import { validatePost, validatePostId } from "../validators/postValidator.js";
-
+import { getMemberById } from "./memberService.js";
 export const createPost = async (body) => {
   // Validate post data
   const validation = validatePost(body);
@@ -9,8 +9,12 @@ export const createPost = async (body) => {
     throw new Error(Object.values(validation.errors).join(", "));
   }
 
-  const { title, content, media_link } = body;
-  const postData = { title, content, media_link };
+  const { title, content, media_link, authorId} = body;
+  const membre =await getMemberById({id:authorId});
+  if (!membre) {
+    throw new Error('Membre introuvable');
+  }
+  const postData = { title, content, media_link,authorId};
   const newPost = await postRepository.createPost(postData);
   return newPost;
 };
@@ -64,4 +68,10 @@ export const deletePost = async (post_id) => {
 
   const deletedPost = await postRepository.deletePost(post_id);
   return deletedPost;
+};
+//relation post-member
+
+export const getPostsByMemberId = async (member_id) => {
+  const posts = await postRepository.getPostsByMemberId(member_id);
+  return posts;
 };
