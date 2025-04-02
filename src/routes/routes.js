@@ -32,6 +32,7 @@ router.get("/test", authenticate, (req, res) => {
 router.post("/posts", postController.createPost);
 router.get("/posts", postController.getPosts);
 router.get("/posts/:post_id", postController.getPostById);
+router.get("/posts=:member_id", postController.getPostsByMemberId);
 router.put("/posts/:post_id", postController.updatePost);
 router.delete("/posts/:post_id", postController.deletePost);
 

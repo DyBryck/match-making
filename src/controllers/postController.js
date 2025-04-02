@@ -25,3 +25,8 @@ export const deletePost = handleRequest(async (req) => {
   const deletedPost = await PostService.deletePost(req.params.post_id);
   return { message: "Post supprimé:", data: deletedPost };
 });
+//relation
+export const getPostsByMemberId = handleRequest(async (req) => {
+  const posts = await PostService.getPostsByMemberId(req.params.member_id);
+  return { message: "Posts du membre trouvés:", data: posts };
+});
