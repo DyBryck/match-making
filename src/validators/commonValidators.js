@@ -47,6 +47,14 @@ export const validateName = (name) => {
   return errors;
 };
 
+export const validateDescription = (desc) => {
+  const errors = [];
+  if (desc && desc.length > 255) {
+    errors.push("La description ne doit pas dépasser 255 caractères.");
+  }
+  return errors;
+};
+
 /**
  * Valide une chaîne de date au format YYYY-MM-DD
  * @param {string} date La date à valider au format YYYY-MM-DD
