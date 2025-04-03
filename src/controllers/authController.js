@@ -19,7 +19,7 @@ export const login = handleRequest(async (req, res) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  return { message: "Connexion réussie", member };
+  return { message: "Connexion réussie", accessToken, refreshToken, member };
 });
 
 export const refreshTokens = handleRequest(async (req, res) => {
@@ -42,7 +42,7 @@ export const refreshTokens = handleRequest(async (req, res) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  return { message: "Tokens rafraîchis" };
+  return { message: "Tokens rafraîchis:", accessToken, newRefreshToken };
 });
 
 export const logout = handleRequest(async (req, res) => {
