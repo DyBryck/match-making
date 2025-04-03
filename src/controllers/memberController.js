@@ -1,5 +1,5 @@
 import * as memberService from "../services/memberService.js";
-import { generateToken } from "../utils/passwordUtils.js";
+import { generateToken } from "../utils/jwtUtils.js";
 import { handleRequest } from "../utils/utils.js";
 
 export const getMemberById = handleRequest(async (req) => {

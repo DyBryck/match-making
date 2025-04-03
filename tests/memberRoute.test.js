@@ -1,6 +1,5 @@
 import { describe, expect, vi } from "vitest";
 import * as memberController from "../src/controllers/memberController.js";
-import { NotFoundError } from "../src/errors/customErrors.js";
 import * as memberRepository from "../src/repositories/memberRepository.js";
 import * as memberService from "../src/services/memberService.js";
 import * as passwordUtils from "../src/utils/passwordUtils.js";
@@ -50,44 +49,6 @@ describe("createMember Controller", () => {
 
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({ error: "Erreur de création" });
-  });
-});
-
-describe("loginMember controller", () => {
-  it("devrait renvoyer connexion réussie et un token lors de la connexion", async () => {
-    const req = { body: { email: "test@exemple.com", password: "123456" } };
-    const res = fakeResponse();
-
-    const fakeMember = {
-      id: "user123",
-      email: "test@exemple.com",
-      password: "hashedPassword",
-    };
-
-    vi.spyOn(memberService, "loginMember").mockResolvedValue(fakeMember);
-    vi.spyOn(passwordUtils, "generateToken").mockReturnValue("fake.jwt.token");
-
-    await memberController.loginMember(req, res);
-
-    expect(res.status).toHaveBeenCalledWith(200);
-    expect(res.json).toHaveBeenCalledWith({
-      statusCode: 200,
-      message: "Connexion réussie.",
-      token: "fake.jwt.token",
-    });
-  });
-
-  it("devrait renvoyer une erreur 404 si le membre n'est pas trouvé", async () => {
-    const req = { body: { email: "notfound@example.com", password: "123456" } };
-    const res = fakeResponse();
-
-    const error = new NotFoundError("Membre introuvable");
-    vi.spyOn(memberService, "loginMember").mockRejectedValue(error);
-
-    await memberController.loginMember(req, res);
-
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith({ error: "Membre introuvable" });
   });
 });
 

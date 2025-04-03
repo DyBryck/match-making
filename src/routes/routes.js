@@ -1,7 +1,9 @@
 import express from "express";
-import * as memberController from "../controllers/memberController.js";
+import * as authController from "../controllers/authController.js";
 import * as gameController from "../controllers/gameController.js";
+import * as memberController from "../controllers/memberController.js";
 import * as postController from "../controllers/postController.js";
+import { authenticate } from "../middlewares/authenticate.js";
 
 const router = express.Router();
 
@@ -15,6 +17,16 @@ router.get("/games", gameController.getGameById);
 router.post("/game", gameController.createGame);
 router.post("/members/login", memberController.loginMember);
 router.post("/members/:id/follow", memberController.followMember);
+
+// Authentification
+router.post("/login", authController.login);
+router.post("/refresh-token", authController.refreshTokens);
+router.post("/logout", authController.logout);
+
+// Test route protégée
+router.get("/test", authenticate, (req, res) => {
+  res.status(200).json({ message: "Utilisateur connecté" });
+});
 
 //Posts
 router.post("/posts", postController.createPost);

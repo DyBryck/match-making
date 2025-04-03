@@ -1,9 +1,14 @@
 import { BadRequestError } from "../errors/customErrors.js";
 import * as memberRepository from "../repositories/memberRepository.js";
-import { comparePassword, hashPassword } from "../utils/passwordUtils.js";
+import { hashPassword } from "../utils/passwordUtils.js";
 import { validateAndThrow } from "../utils/validatorUtils.js";
 import { validateMember } from "../validators/memberValidator.js";
 
+/**
+ *
+ * @param {object} ID - Identifiant du membre à trouver
+ * @returns
+ */
 export const getMemberById = async (body) => {
   const { id } = body;
   return await memberRepository.getMemberById(parseInt(id));
@@ -27,15 +32,6 @@ export const createMember = async (body) => {
   };
 
   return await memberRepository.createMember(memberData);
-};
-
-export const loginMember = async (body) => {
-  const { password } = body;
-
-  const memberFound = await getMemberByEmail(body);
-  await comparePassword(password, memberFound.password);
-
-  return memberFound;
 };
 
 // Relations
