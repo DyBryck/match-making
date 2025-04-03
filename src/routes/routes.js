@@ -35,5 +35,6 @@ router.get("/posts/:post_id", postController.getPostById);
 router.get("/posts=:member_id", postController.getPostsByMemberId);
 router.put("/posts/:post_id", postController.updatePost);
 router.delete("/posts/:post_id", postController.deletePost);
-
+//relation jeu post
+router.get('/game/:game_id/posts', postController.getPostsByGameId);
 export default router;

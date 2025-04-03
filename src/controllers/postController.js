@@ -30,3 +30,7 @@ export const getPostsByMemberId = handleRequest(async (req) => {
   const posts = await PostService.getPostsByMemberId(req.params.member_id);
   return { message: "Posts du membre trouvés:", data: posts };
 });
+export const getPostsByGameId = handleRequest(async (req) => {
+  const posts = await PostService.getPostsByGameId(req.params.game_id);
+  return { message: "Posts du jeu trouvés:", data: posts };
+})

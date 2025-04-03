@@ -1,6 +1,7 @@
 import * as postRepository from "../repositories/postRepository.js";
 import { validatePost, validatePostId } from "../validators/postValidator.js";
 import { getMemberById } from "./memberService.js";
+import { getGameById } from "./gameService.js";
 export const createPost = async (body) => {
   // Validate post data
   const validation = validatePost(body);
@@ -9,12 +10,16 @@ export const createPost = async (body) => {
     throw new Error(Object.values(validation.errors).join(", "));
   }
 
-  const { title, content, media_link, authorId} = body;
+  const { title, content, media_link, authorId,gameId} = body;
   const membre =await getMemberById({id:authorId});
   if (!membre) {
     throw new Error('Membre introuvable');
   }
-  const postData = { title, content, media_link,authorId};
+  const game = await getGameById({ id: gameId });
+  if (!game) {
+    throw new Error('Jeu introuvable');
+  }
+  const postData = { title, content, media_link,authorId,gameId};
   const newPost = await postRepository.createPost(postData);
   return newPost;
 };
@@ -73,5 +78,14 @@ export const deletePost = async (post_id) => {
 
 export const getPostsByMemberId = async (member_id) => {
   const posts = await postRepository.getPostsByMemberId(member_id);
+  return posts;
+};
+export const getPostsByGameId = async (game_id) => {
+  // Vérifier si le jeu existe
+  const game = await getGameById({ id: game_id });
+  if (!game) {
+    throw new Error('Jeu introuvable');
+  }
+  const posts = await postRepository.getPostsByGameId(game_id);
   return posts;
 };
