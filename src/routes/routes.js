@@ -11,6 +11,8 @@ router.get("/members/:id", memberController.getMemberById);
 router.post("/members", memberController.createMember);
 router.get("/games", gameController.getGameById);
 router.post("/game", gameController.createGame);
+router.get("/games", gameController.getGameById);
+router.post("/game", gameController.createGame);
 router.post("/members/login", memberController.loginMember);
 router.post("/members/:id/follow", memberController.followMember);
 
