@@ -1,10 +1,10 @@
 import express from "express";
 import * as memberController from "../controllers/memberController.js";
-import { authenticate } from "../middlewares/authenticate.js";
+// import { authenticate } from "../middlewares/authenticate.js";
 
 const router = express.Router();
 
-router.use(authenticate);
+// router.use(authenticate);
 
 router.get("/", memberController.getMemberByEmail);
 router.get("/:id", memberController.getMemberById);

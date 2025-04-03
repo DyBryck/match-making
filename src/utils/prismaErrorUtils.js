@@ -10,7 +10,6 @@ const prismaErrorHandler = async (fn) => {
   try {
     return await fn();
   } catch (error) {
-    console.error(error);
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       const errorMeta = error.meta;
       switch (error.code) {
