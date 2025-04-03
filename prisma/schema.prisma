@@ -56,3 +56,14 @@ model game {
 
   @@map("game")
 }
+
+model event  {
+  event_id              Int          @id @default(autoincrement()) @map("event_id")
+  name                  String       @unique @db.VarChar(25)
+  link                  String       @db.VarChar(200)
+  description           String?      @db.VarChar(255)
+  date                  DateTime     @db.Date
+  created_at            DateTime     @default(now()) @db.Date
+
+  @@map("event")
+}
