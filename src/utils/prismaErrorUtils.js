@@ -10,15 +10,18 @@ const prismaErrorHandler = async (fn) => {
   try {
     return await fn();
   } catch (error) {
+    console.error(error);
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       const errorMeta = error.meta;
-      if (error.code === "P2025") {
-        throw new NotFoundError(
-          `Problème rencontré dans la table ${errorMeta.modelName}: ${errorMeta.cause}`,
-        );
-      }
-      if (error.code === "P2002") {
-        throw new BadRequestError(`Problème de contrainte unique: ${errorMeta.target} existe déjà`);
+      switch (error.code) {
+        case "P2025":
+          throw new NotFoundError(
+            `Problème rencontré dans la table ${errorMeta.modelName}: élément introuvable.`,
+          );
+        case "P2002":
+          throw new BadRequestError(
+            `Problème de contrainte unique: ${errorMeta.target} existe déjà`,
+          );
       }
     }
     throw error;

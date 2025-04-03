@@ -1,5 +1,4 @@
 import * as memberService from "../services/memberService.js";
-import { generateToken } from "../utils/jwtUtils.js";
 import { handleRequest } from "../utils/utils.js";
 
 export const getMemberById = handleRequest(async (req) => {
@@ -15,18 +14,6 @@ export const getMemberByEmail = handleRequest(async (req) => {
 export const createMember = handleRequest(async (req) => {
   const memberCreated = await memberService.createMember(req.body);
   return { message: "Membre crée avec succès:", member: memberCreated };
-});
-
-export const loginMember = handleRequest(async (req) => {
-  const memberFound = await memberService.loginMember(req.body);
-
-  const token = generateToken({ id: memberFound.member_id, email: memberFound.email });
-
-  return {
-    statusCode: 200,
-    message: "Connexion réussie.",
-    token,
-  };
 });
 
 export const followMember = handleRequest(async (req) => {
