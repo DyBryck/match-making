@@ -11,12 +11,12 @@ const router = express.Router();
 router.get("/members", memberController.getMemberByEmail);
 router.get("/members/:id", memberController.getMemberById);
 router.post("/members", memberController.createMember);
-router.get("/games", gameController.getGameById);
-router.post("/game", gameController.createGame);
-router.get("/games", gameController.getGameById);
-router.post("/game", gameController.createGame);
 router.post("/members/login", memberController.loginMember);
 router.post("/members/:id/follow", memberController.followMember);
+
+// Jeux
+router.get("/games/:id", gameController.getGameById);
+router.post("/games", gameController.createGame);
 
 // Authentification
 router.post("/login", authController.login);

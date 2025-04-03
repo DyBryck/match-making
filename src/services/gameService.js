@@ -1,11 +1,10 @@
-import * as gameRepository from "../repositories/gameRepository.js";
 import { NotFoundError } from "../errors/customErrors.js";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import * as gameRepository from "../repositories/gameRepository.js";
 
-export const getGameById = async (query) => {
-  const gameFound = await gameRepository.findById(parseInt(query.id));
+export const getGameById = async (body) => {
+  const { id } = body;
 
+  const gameFound = await gameRepository.findById(parseInt(id));
   if (!gameFound) {
     throw new NotFoundError("Jeu non trouvé");
   }
@@ -13,18 +12,10 @@ export const getGameById = async (query) => {
   return gameFound;
 };
 
-export const createGame = async (gameData) => {
-  // Vérifie si un jeu avec ce nom existe déjà
-  const existingGame = await prisma.jeu.findUnique({
-    where: { name: gameData.name },
-  });
-
-  if (existingGame) {
-    throw new Error(`Le jeu "${gameData.name}" existe déjà !`);
-  }
-
-  // Insérer le jeu si tout est bon
-  return await prisma.jeu.create({
-    data: gameData,
-  });
+export const createGame = async (body) => {
+  const gameData = {
+    ...body,
+    published_date: new Date(body.published_date),
+  };
+  return await gameRepository.createGame(gameData);
 };

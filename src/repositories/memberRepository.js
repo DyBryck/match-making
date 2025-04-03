@@ -11,14 +11,14 @@ export const getMemberById = async (id) =>
   );
 
 export const getMemberByEmail = async (email) =>
-  prismaErrorHandler(async () =>
+  prismaErrorHandler(() =>
     prisma.member.findUniqueOrThrow({
       where: { email: email },
     }),
   );
 
 export const createMember = async (data) =>
-  prismaErrorHandler(async () =>
+  prismaErrorHandler(() =>
     prisma.member.create({
       data: data,
     }),

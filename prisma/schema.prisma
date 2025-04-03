@@ -32,14 +32,6 @@ model member {
   @@map("member")
 }
 
-model jeu {
-  game_id              Int          @id @default(autoincrement()) @map("game_id")
-  name                 String       @unique @db.VarChar(25)
-  published_date       DateTime     @default(now()) @db.Date
-  link                 String       @db.VarChar(200)
-  description          String?      @db.VarChar(255)
-}
-
 model member_follow {
   member_follow_id       Int                @id @default(autoincrement()) @map("member_follow_id")
   follower_id            Int
@@ -53,4 +45,14 @@ model member_follow {
   @@index([follower_id])
   @@index([followed_id])
   @@map("member_follow")
+}
+
+model game {
+  game_id              Int          @id @default(autoincrement()) @map("game_id")
+  name                 String       @unique @db.VarChar(25)
+  published_date       DateTime     @db.Date
+  link                 String       @db.VarChar(200)
+  description          String?      @db.VarChar(255)
+
+  @@map("game")
 }
